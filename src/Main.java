@@ -21,5 +21,12 @@ public class Main {
         }catch (RuntimeException e){
             System.out.println(e.getMessage());
         }
+        System.out.println("\n\nIteration method:");
+        try{
+            IterationMethod iterationMethod = new IterationMethod(-2, -1, 0.0001, x -> Math.pow(x, 3) + 0.2 * Math.pow(x, 2) - 0.6 * x + 1.5, x -> x - 0.0943396226 * (Math.pow(x, 3) + 0.2 * Math.pow(x, 2) - 0.6 * x + 1.5));
+            System.out.println(iterationMethod.calculate());
+        }catch (RuntimeException e){
+            System.out.println(e.getMessage());
+        }
     }
 }

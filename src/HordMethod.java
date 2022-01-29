@@ -13,9 +13,9 @@ public class HordMethod extends Method{
             c = b;
         }
         this.function = function;
-        this.secondDerivative = functionSecondDerivative;
     }
-    public double calculate(){
+    @Override
+    double calculate(){
         System.out.println("x: " + x + "\tc: " + c + "\tf(x): " + function.calculateFunction(x));
         if(Math.abs(function.calculateFunction(x)) < eps){
             return x;

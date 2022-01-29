@@ -1,12 +1,12 @@
-public class HordMethod{
+public class HordMethod implements Method{
     final double A;
     final double B;
     final double EPS;
     double x;
     final double c;
-    final Function<Double> FUNCTION;
-    final Function<Double> FUNCTION_SECOND_DERIVATIVE;
-    HordMethod(double a, double b, double eps, Function<Double> function, Function<Double> functionSecondDerivative){
+    final Function FUNCTION;
+    final Function FUNCTION_SECOND_DERIVATIVE;
+    HordMethod(double a, double b, double eps, Function function, Function functionSecondDerivative){
         this.A = a;
         this.B = b;
         this.EPS = eps;
@@ -20,13 +20,13 @@ public class HordMethod{
         this.FUNCTION = function;
         this.FUNCTION_SECOND_DERIVATIVE = functionSecondDerivative;
     }
-    public double calculateHordMethod(){
+    public double calculate(){
         System.out.println("x: " + x + "\tc: " + c + "\tf(x): " + FUNCTION.calculateFunction(x));
         if(Math.abs(FUNCTION.calculateFunction(x)) < EPS){
             return x;
         }else{
             x = x - ((FUNCTION.calculateFunction(x) * (c - x)) / (FUNCTION.calculateFunction(c) - FUNCTION.calculateFunction(x)));
-            return calculateHordMethod();
+            return calculate();
         }
     }
 }

@@ -1,3 +1,3 @@
-public interface Function<T> {
-    double calculateFunction(T x);
+public interface Function {
+    double calculateFunction(double x);
 }

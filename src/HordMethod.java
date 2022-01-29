@@ -5,6 +5,12 @@ public class HordMethod extends Method{
         this.a = a;
         this.b = b;
         this.eps = eps;
+        if(a >= b) {
+            throw new RuntimeException("Error, a is bigger or equal b");
+        }
+        if(eps > b - a){
+            throw new RuntimeException("Error, eps is bigger than interval between a and b");
+        }
         if(function.calculateFunction(a) * functionSecondDerivative.calculateFunction(a) > 0){
             x = b;
             c = a;

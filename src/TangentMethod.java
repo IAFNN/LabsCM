@@ -4,6 +4,12 @@ public class TangentMethod extends Method{
         this.eps = eps;
         this.function = function;
         this.firstDerivative = firstDerivative;
+        if(a >= b) {
+            throw new RuntimeException("Error, a is bigger or equal b");
+        }
+        if(eps > b - a){
+            throw new RuntimeException("Error, eps is bigger than interval between a and b");
+        }
         if(function.calculateFunction(a) * secondDerivative.calculateFunction(a) > 0){
             x = a;
         }else{

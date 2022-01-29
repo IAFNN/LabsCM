@@ -4,6 +4,12 @@ public class DichotomyMethod extends Method{
         this.b = b;
         this.eps = eps;
         this.function = function;
+        if(a >= b) {
+            throw new RuntimeException("Error, a is bigger or equal b");
+        }
+        if(eps > b - a){
+            throw new RuntimeException("Error, eps is bigger than interval between a and b");
+        }
     }
     double c;
 
@@ -13,6 +19,8 @@ public class DichotomyMethod extends Method{
         System.out.println("a: " + a + "\t\tb: " + b + "\t\tc: " + c + "\t\tf(c): " + function.calculateFunction(c));
         if(Math.abs(function.calculateFunction(c)) < eps){
             return c;
+        }else if(a == b){
+            throw new RuntimeException("Error, there is no roots on this interval");
         }else if(function.calculateFunction(c) * function.calculateFunction(a) < 0){
             b = c;
             return calculate();

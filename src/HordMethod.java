@@ -1,31 +1,26 @@
-public class HordMethod implements Method{
-    final double A;
-    final double B;
-    final double EPS;
+public class HordMethod extends Method{
     double x;
     final double c;
-    final Function FUNCTION;
-    final Function FUNCTION_SECOND_DERIVATIVE;
     HordMethod(double a, double b, double eps, Function function, Function functionSecondDerivative){
-        this.A = a;
-        this.B = b;
-        this.EPS = eps;
+        this.a = a;
+        this.b = b;
+        this.eps = eps;
         if(function.calculateFunction(a) * functionSecondDerivative.calculateFunction(a) > 0){
-            x = B;
-            c = A;
+            x = b;
+            c = a;
         }else{
-            x = A;
-            c = B;
+            x = a;
+            c = b;
         }
-        this.FUNCTION = function;
-        this.FUNCTION_SECOND_DERIVATIVE = functionSecondDerivative;
+        this.function = function;
+        this.secondDerivative = functionSecondDerivative;
     }
     public double calculate(){
-        System.out.println("x: " + x + "\tc: " + c + "\tf(x): " + FUNCTION.calculateFunction(x));
-        if(Math.abs(FUNCTION.calculateFunction(x)) < EPS){
+        System.out.println("x: " + x + "\tc: " + c + "\tf(x): " + function.calculateFunction(x));
+        if(Math.abs(function.calculateFunction(x)) < eps){
             return x;
         }else{
-            x = x - ((FUNCTION.calculateFunction(x) * (c - x)) / (FUNCTION.calculateFunction(c) - FUNCTION.calculateFunction(x)));
+            x = x - ((function.calculateFunction(x) * (c - x)) / (function.calculateFunction(c) - function.calculateFunction(x)));
             return calculate();
         }
     }

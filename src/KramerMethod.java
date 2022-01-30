@@ -3,7 +3,10 @@ import java.util.ArrayList;
 public class KramerMethod implements Method{
     @Override
     public ArrayList<Double> calculateMethod(Matrix matrix, ArrayList<Double> results) {
-        double determinant = Matrix.calculateDeterminant(matrix);
+        double determinant = Util.calculateDeterminant(matrix);
+        if(determinant == 0){
+            throw new RuntimeException("Error, determinant equals zero");
+        }
         System.out.println("Matrix determinant:\n" + determinant);
         ArrayList<Double> roots = new ArrayList<>();
         Matrix matrixCopy = matrix.clone();
@@ -20,6 +23,6 @@ public class KramerMethod implements Method{
         for(int i = 0; i < matrixCopy.size; i++){
             matrixCopy.matrix.get(i).set(i2, results.get(i));
         }
-        return Matrix.calculateDeterminant(matrixCopy);
+        return Util.calculateDeterminant(matrixCopy);
     }
 }

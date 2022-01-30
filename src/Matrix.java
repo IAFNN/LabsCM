@@ -11,6 +11,9 @@ public class Matrix implements Cloneable{
             }
         }
         int count = 0;
+        if(numbers.size() != size){
+            throw new RuntimeException("Error, amount of numbers is not right");
+        }
         for(double number : numbers){
             if(count % size == 0){
                 matrix.add(new ArrayList<>());

@@ -5,6 +5,9 @@ public class InverseMethod implements Method{
     @Override
     public ArrayList<Double> calculateMethod(Matrix matrix, ArrayList<Double> results) {
         double determinant = Util.calculateDeterminant(matrix);
+        if(determinant == 0){
+            throw new RuntimeException("Error, determinant equals 0");
+        }
         System.out.println("Matrix determinant equals " + determinant);
         ArrayList<Double> transposedList = new ArrayList<>(Collections.nCopies(matrix.size * matrix.size, 0.0));
         for(int i = 0; i < matrix.size; i++){

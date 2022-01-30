@@ -18,8 +18,10 @@ public class Main {
         results.add(2.71);
         results.add(1.26);
         results.add(1.03);
+        System.out.println("Kramer method:");
         System.out.println(kramerMethod.calculateMethod(matrix, results));
         InverseMethod inverseMethod = new InverseMethod();
+        System.out.println("Inverse method:");
         System.out.println(inverseMethod.calculateMethod(matrix, results));
     }
 }

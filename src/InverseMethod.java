@@ -5,6 +5,7 @@ public class InverseMethod implements Method{
     @Override
     public ArrayList<Double> calculateMethod(Matrix matrix, ArrayList<Double> results) {
         double determinant = Util.calculateDeterminant(matrix);
+        System.out.println("Matrix determinant equals " + determinant);
         ArrayList<Double> transposedList = new ArrayList<>(Collections.nCopies(matrix.size * matrix.size, 0.0));
         for(int i = 0; i < matrix.size; i++){
             for(int i2 = 0; i2 < matrix.size; i2++){
@@ -20,6 +21,7 @@ public class InverseMethod implements Method{
                 }
                 double minor = Util.calculateDeterminant(new Matrix(numbers));
                 minor *= Math.pow(-1, i + i2 + 2);
+                System.out.println("Algebraic complement of " + (i + 1) + (i2 + 1) + " element equals " + minor);
                 minor /= determinant;
                 transposedList.set(i2 * matrix.size + i, minor);
             }

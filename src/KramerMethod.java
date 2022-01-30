@@ -4,10 +4,13 @@ public class KramerMethod implements Method{
     @Override
     public ArrayList<Double> calculateMethod(Matrix matrix, ArrayList<Double> results) {
         double determinant = Matrix.calculateDeterminant(matrix);
+        System.out.println("Matrix determinant:\n" + determinant);
         ArrayList<Double> roots = new ArrayList<>();
         Matrix matrixCopy = matrix.clone();
         for(int i = 0; i < matrix.size; i++) {
             double determinantNew = KramerMethod.calculateModifiedDeterminant(matrixCopy, results, i);
+            System.out.println("Determinant with " + (i + 1) + " column changed to results:\n" + determinantNew);
+            System.out.println((i + 1) + " root equals:\n" + determinantNew / determinant);
             roots.add(determinantNew / determinant);
             matrixCopy = matrix.clone();
         }

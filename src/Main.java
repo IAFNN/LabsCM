@@ -33,10 +33,10 @@ public class Main {
         }
         System.out.println("Gauss method:");
         GaussMethod gaussMethod = new GaussMethod();
-//        try {
+        try {
             System.out.println(gaussMethod.calculateMethod(matrix, results));
-//        }catch (RuntimeException e){
-//            System.out.println(e.getMessage());
-//        }
+        }catch (RuntimeException e){
+            System.out.println(e.getMessage());
+        }
     }
 }

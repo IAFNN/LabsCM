@@ -25,9 +25,14 @@ public class Matrix implements Cloneable{
 
     @Override
     public String toString() {
-        return "Matrix{" +
-                "matrix=" + matrix +
-                '}';
+        String result = "";
+        for(ArrayList<Double> line : this.matrix){
+            for(Double number : line){
+                result += number.toString() + "\t\t";
+            }
+            result += "\n";
+        }
+        return result;
     }
 
 

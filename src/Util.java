@@ -39,4 +39,21 @@ public class Util {
         }
         return result;
     }
+    static void searchForMainElement(Matrix matrix, ArrayList<Double> results){
+        double max = Double.NEGATIVE_INFINITY;
+        int maxIndex = 0;
+        for(int i = 0; i < matrix.size; i++){
+            if(matrix.matrix.get(i).get(0) > max){
+                max = matrix.matrix.get(i).get(0);
+                maxIndex = i;
+            }
+        }
+        UtilExtendedArrayList.swap(results, 0, maxIndex);
+        swapLines(matrix, 0, maxIndex);
+    }
+    static void swapLines(Matrix matrix, int firstLineIndex, int secondLineIndex){
+        ArrayList<Double> temp = matrix.matrix.get(firstLineIndex);
+        matrix.matrix.set(firstLineIndex, matrix.matrix.get(secondLineIndex));
+        matrix.matrix.set(secondLineIndex, temp);
+    }
 }

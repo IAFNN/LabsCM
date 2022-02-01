@@ -38,7 +38,7 @@ public class Main {
         }catch (RuntimeException e){
             System.out.println(e.getMessage());
         }
-        System.out.println("LUMethod:");
+        System.out.println("\nLUMethod:");
         LUMethod LUMethod = new LUMethod();
         try {
             System.out.println(LUMethod.calculateMethod(matrix, results));

@@ -29,10 +29,13 @@ public class LUMethod implements Method{
                 }
             }
         }
+        System.out.println("L matrix:\n" + L);
         Util.invertLines(L);
         results = UtilExtendedArrayList.invert(results);
         Util.gaussReverse(L, results);
         results = UtilExtendedArrayList.invert(results);
+        System.out.println("Y vector:\n" + results);
+        System.out.println("U matrix:\n" + U);
         Util.gaussReverse(U, results);
         return results;
     }

@@ -56,4 +56,36 @@ public class Util {
         matrix.matrix.set(firstLineIndex, matrix.matrix.get(secondLineIndex));
         matrix.matrix.set(secondLineIndex, temp);
     }
+    static void gaussReverse(Matrix matrix, ArrayList<Double> results){
+        for(int i = matrix.size - 1; i > -1; i--){
+            for(int i2 = matrix.size - 1; i2 > i; i2--){
+                results.set(i, results.get(i) - results.get(i2) * matrix.matrix.get(i).get(i2));
+            }
+            results.set(i, results.get(i) / matrix.matrix.get(i).get(i));
+        }
+    }
+    static void invertLines(Matrix matrix){
+        int count = matrix.size - 1;
+        for(int i = 0; i <= count; i++){
+            if(i == count){
+                moveToEnd(matrix, i);
+                break;
+            }
+            ArrayList<Double> lineTemp = matrix.matrix.get(count);
+            matrix.matrix.set(count, matrix.matrix.get(i));
+            matrix.matrix.set(i, lineTemp);
+            moveToEnd(matrix, i);
+            moveToEnd(matrix, count);
+            count--;
+        }
+    }
+
+    public static void moveToEnd(Matrix matrix, int count) {
+        for(int i = 0; i < matrix.size / 2; i++){
+            double temp = matrix.matrix.get(count).get(matrix.size - i - 1);
+            matrix.matrix.get(count).set(matrix.size - i - 1, matrix.matrix.get(count).get(i));
+            matrix.matrix.get(count).set(i, temp);
+        }
+
+    }
 }

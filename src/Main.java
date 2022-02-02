@@ -45,5 +45,12 @@ public class Main {
         }catch (RuntimeException e){
             System.out.println(e.getMessage());
         }
+        System.out.println("\nYakobi Method:");
+        YakobiMethod yakobiMethod = new YakobiMethod();
+        try {
+            System.out.println(yakobiMethod.calculateMethod(matrix, results));
+        }catch (RuntimeException e){
+            System.out.println(e.getMessage());
+        }
     }
 }

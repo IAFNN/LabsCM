@@ -52,5 +52,12 @@ public class Main {
         }catch (RuntimeException e){
             System.out.println(e.getMessage());
         }
+        System.out.println("\nZeidel Method:");
+        ZeidelMethod zeidelMethod = new ZeidelMethod();
+        try{
+            System.out.println(zeidelMethod.calculateMethod(matrix, results));
+        }catch (RuntimeException e){
+            System.out.println(e.getMessage());
+        }
     }
 }

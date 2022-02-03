@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Util {
     static double calculateDeterminant(Matrix matrix){
@@ -87,5 +88,14 @@ public class Util {
             matrix.matrix.get(count).set(i, temp);
         }
 
+    }
+    public static Matrix transpose(Matrix matrix){
+        Matrix transposed = new Matrix(new ArrayList<>(Collections.nCopies(matrix.size * matrix.size, 0.0)));
+        for(int i = 0; i < matrix.size; i++){
+            for(int j = 0; j < matrix.size; j++){
+                transposed.matrix.get(j).set(i, matrix.matrix.get(i).get(j));
+            }
+        }
+        return transposed;
     }
 }

@@ -59,5 +59,27 @@ public class Main {
         }catch (RuntimeException e){
             System.out.println(e.getMessage());
         }
+        numbers = new ArrayList<>();
+        numbers.add(3.2);
+        numbers.add(1.0);
+        numbers.add(1.0);
+        numbers.add(1.0);
+        numbers.add(3.7);
+        numbers.add(1.0);
+        numbers.add(1.0);
+        numbers.add(1.0);
+        numbers.add(4.2);
+        results = new ArrayList<>();
+        results.add(4.0);
+        results.add(4.5);
+        results.add(4.0);
+        matrix = new Matrix(numbers);
+        System.out.println("\nSquare root method:");
+        SquareRootMethod squareRootMethod = new SquareRootMethod();
+        try{
+            System.out.println(squareRootMethod.calculateMethod(matrix, results));
+        }catch (RuntimeException e){
+            System.out.println(e.getMessage());
+        }
     }
 }

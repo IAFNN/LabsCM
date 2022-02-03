@@ -60,26 +60,39 @@ public class Main {
             System.out.println(e.getMessage());
         }
         numbers = new ArrayList<>();
-        numbers.add(3.2);
+        numbers.add(2.0);
+        numbers.add(-3.0);
         numbers.add(1.0);
+        numbers.add(-1.0);
+        numbers.add(-5.0);
+        numbers.add(0.0);
+        numbers.add(2.0);
+        numbers.add(-1.0);
+        numbers.add(3.0);
         numbers.add(1.0);
-        numbers.add(1.0);
-        numbers.add(3.7);
-        numbers.add(1.0);
-        numbers.add(1.0);
-        numbers.add(1.0);
-        numbers.add(4.2);
+        numbers.add(-1.0);
+        numbers.add(-4.0);
+        numbers.add(-1.0);
+        numbers.add(3.0);
+        numbers.add(2.0);
         results = new ArrayList<>();
-        results.add(4.0);
-        results.add(4.5);
-        results.add(4.0);
-        matrix = new Matrix(numbers);
+        results.add(3.0);
+        results.add(-3.0);
+        results.add(-1.0);
+        results.add(6.0);
+        results.add(3.0);
+        matrix = new Matrix(numbers, 5, 3);
+        OverrideSoLAQ overrideSoLAQ = new OverrideSoLAQ(matrix, results);
+        overrideSoLAQ.calculateN();
+        overrideSoLAQ.calculateC();
         System.out.println("\nSquare root method:");
         SquareRootMethod squareRootMethod = new SquareRootMethod();
         try{
-            System.out.println(squareRootMethod.calculateMethod(matrix, results));
+            System.out.println(squareRootMethod.calculateMethod(overrideSoLAQ.N, overrideSoLAQ.C));
         }catch (RuntimeException e){
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
+
+
     }
 }

@@ -1,8 +1,15 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Objects;
 
 public class Util {
     static double calculateDeterminant(Matrix matrix){
+        try{
+            if(Objects.equals(matrix.m, matrix.n) && !(Objects.equals(matrix.m, null))){
+                matrix.size = matrix.m;
+            }
+        }catch (IndexOutOfBoundsException ignored){
+        }
         if(matrix.size > 2) {
             ArrayList<Double> additions = new ArrayList<>();
             for(int i = 0; i < matrix.size; i++) {
@@ -25,6 +32,17 @@ public class Util {
         }else{
             return matrix.matrix.get(0).get(0) * matrix.matrix.get(1).get(1) - matrix.matrix.get(0).get(1) * matrix.matrix.get(1).get(0);
         }
+    }
+    static Matrix multiplyMatrixOnMatrix(Matrix matrix, Matrix matrix2){
+        ArrayList<ArrayList<Double>> result = new ArrayList<>();
+        for(ArrayList<Double> line : matrix.matrix){
+            result.add(multiplyMatrixOnVector(Util.transpose(matrix2, matrix2.m, matrix2.n), line));
+        }
+        Matrix resultMatrix = matrix.clone();
+        resultMatrix.matrix = result;
+        resultMatrix.m = matrix.m;
+        resultMatrix.n = matrix2.n;
+        return resultMatrix;
     }
     static ArrayList<Double> multiplyMatrixOnVector(Matrix matrix, ArrayList<Double> vector){
         ArrayList<Double> result = new ArrayList<>();
@@ -93,6 +111,15 @@ public class Util {
         Matrix transposed = new Matrix(new ArrayList<>(Collections.nCopies(matrix.size * matrix.size, 0.0)));
         for(int i = 0; i < matrix.size; i++){
             for(int j = 0; j < matrix.size; j++){
+                transposed.matrix.get(j).set(i, matrix.matrix.get(i).get(j));
+            }
+        }
+        return transposed;
+    }
+    public static Matrix transpose(Matrix matrix, int m, int n){
+        Matrix transposed = new Matrix(new ArrayList<>(Collections.nCopies(m * n, 0.0)), n, m);
+        for(int i = 0; i < m; i++){
+            for(int j = 0; j < n; j++){
                 transposed.matrix.get(j).set(i, matrix.matrix.get(i).get(j));
             }
         }

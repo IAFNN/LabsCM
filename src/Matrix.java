@@ -1,25 +1,37 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Matrix implements Cloneable{
-    ArrayList<ArrayList<Double>> matrix = new ArrayList<>();
-    int size;
+    ArrayList<ArrayList<Double>> matrix;
+    Integer size;
+    Integer m;
+    Integer n;
+    Matrix(ArrayList<Double> numbers, int m, int n){
+        this.m = m;
+        this.n = n;
+        matrix = new ArrayList<>();
+        for(int i = 0; i < m; i++){
+            matrix.add(new ArrayList<>(Collections.nCopies(n, 0.0)));
+        }
+        for(int i = 0; i < m; i++){
+            for(int j = 0; j < n; j++){
+                matrix.get(i).set(j, numbers.get(i * n + j));
+            }
+        }
+    }
     Matrix(ArrayList<Double> numbers){
         for(int i = 1;;i++){
             if(i * i >= numbers.size()){
-                size = i;
+                this.size = i;
                 break;
             }
         }
-        int count = 0;
-        if(numbers.size() != size * size){
-            throw new RuntimeException("Error, amount of numbers is not right");
+        matrix = new ArrayList<>();
+        for(int i = 0; i < size; i++){
+            matrix.add(new ArrayList<>(Collections.nCopies(size, 0.0)));
         }
-        for(double number : numbers){
-            if(count % size == 0){
-                matrix.add(new ArrayList<>());
-            }
-            matrix.get(count / size).add(number);
-            count++;
+        for(int i = 0; i < numbers.size(); i++){
+            matrix.get(i / size).set(i % size, numbers.get(i));
         }
     }
 
@@ -41,9 +53,17 @@ public class Matrix implements Cloneable{
         try {
             Matrix clone = (Matrix) super.clone();
             clone.matrix = (ArrayList<ArrayList<Double>>) matrix.clone();
-            clone.size = size;
-            for(int i = 0; i < clone.size; i++){
-                clone.matrix.set(i, (ArrayList<Double>) matrix.get(i).clone());
+            try {
+                clone.size = size;
+                for (int i = 0; i < clone.size; i++) {
+                    clone.matrix.set(i, (ArrayList<Double>) matrix.get(i).clone());
+                }
+            }catch (NullPointerException e){
+                clone.m = m;
+                clone.n = n;
+                for(int i = 0; i < m; i++){
+                    clone.matrix.set(i, (ArrayList<Double>) matrix.get(i).clone());
+                }
             }
             return clone;
         } catch (CloneNotSupportedException e) {

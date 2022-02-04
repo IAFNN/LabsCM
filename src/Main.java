@@ -82,9 +82,12 @@ public class Main {
         results.add(6.0);
         results.add(3.0);
         matrix = new Matrix(numbers, 5, 3);
+        System.out.println("\nOverrided system of linear equations solving:");
         OverrideSoLAQ overrideSoLAQ = new OverrideSoLAQ(matrix, results);
         overrideSoLAQ.calculateN();
+        System.out.println("N matrix:\n" + overrideSoLAQ.N);
         overrideSoLAQ.calculateC();
+        System.out.println("C matrix:\n" + overrideSoLAQ.C);
         System.out.println("\nSquare root method:");
         SquareRootMethod squareRootMethod = new SquareRootMethod();
         try{

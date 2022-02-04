@@ -9,10 +9,13 @@ public class SquareRootMethod implements Method{
         }
         Matrix L = findLMatrix(matrix);
         Matrix LTransposed = Util.transpose(L);
+        System.out.println("L matrix:\n" + L);
+        System.out.println("L transposed matrix:\n" + LTransposed);
         Util.invertLines(L);
         results = UtilExtendedArrayList.invert(results);
         Util.gaussReverse(L, results);
         results = UtilExtendedArrayList.invert(results);
+        System.out.println("y:\n" + results);
         Util.gaussReverse(LTransposed, results);
         return results;
     }

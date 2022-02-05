@@ -7,18 +7,16 @@ public class IterationMethod extends Method{
     BiFunction<Double, Double, Double> firstFunction;
     double result;
     @Override
-    ArrayList<ArrayList<Double>> calculate() {
-        ArrayList<ArrayList<Double>> results = new ArrayList<>();
-        results.add(new ArrayList<>(Collections.nCopies(system.size(), 0.0)));
-        results.add(new ArrayList<>(Collections.nCopies(system.size(), 0.0)));
+    ArrayList<Double> calculate() {
+        ArrayList<Double> results = new ArrayList<>(Collections.nCopies(system.size(), 0.0));
         double difference = Double.POSITIVE_INFINITY;
         int count = 0;
         while (difference > eps) {
             for (int i = 0; i < system.size(); i++) {
-                results.get(i).set(0, system.get(i).apply(results.get(0).get(0), results.get(1).get(0)));
+                results.set(i, system.get(i).apply(results.get(0), results.get(1)));
             }
-            difference = checkDifference(results);
-            System.out.println("x: " + results.get(0).get(0) + "\t\ty: " + results.get(1).get(0));
+            difference = checkDifference(results, result, firstFunction);
+            System.out.println("x: " + results.get(0) + "\t\ty: " + results.get(1));
             count++;
             if(count > 100){
                 throw new RuntimeException("Error, iteration method isn't convergent");
@@ -33,7 +31,7 @@ public class IterationMethod extends Method{
         this.firstFunction = firstFunction;
         this.result = result;
     }
-    double checkDifference(ArrayList<ArrayList<Double>> results){
-        return Math.abs(result - firstFunction.apply(results.get(0).get(0), results.get(1).get(0)));
+    static double checkDifference(ArrayList<Double> results, double result, BiFunction<Double, Double, Double> function){
+        return Math.abs(result - function.apply(results.get(0), results.get(1)));
     }
 }

@@ -19,6 +19,9 @@ public class NewtonMethod extends Method{
                     Util.deriveByX(system.get(1)).apply(x, y),
                     Util.deriveByY(system.get(1)).apply(x, y)));
             double deltaXY = Util.calculateDeterminant(new Matrix(arguments));
+            if(deltaXY == 0){
+                throw new RuntimeException("Error, delta xy equals zero");
+            }
             arguments = new ArrayList<>(Arrays.asList(system.get(0).apply(x, y),
                     Util.deriveByY(system.get(0)).apply(x, y), system.get(1).apply(x, y),
                     Util.deriveByY(system.get(1)).apply(x, y)));
@@ -30,6 +33,7 @@ public class NewtonMethod extends Method{
             deltaY = deltaY / deltaXY * -1;
             results.set(0, results.get(0) + deltaX);
             results.set(1, results.get(1) + deltaY);
+            System.out.println("x: " + results.get(0) + "\t\ty: " + results.get(1));
             difference = IterationMethod.checkDifference(results, result, firstFunction);
         }
         return results;

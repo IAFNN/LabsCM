@@ -32,6 +32,12 @@ public class InterpolatedFunction {
     }
     InterpolatedFunction (ArrayList<Double> arguments, ArrayList<Double> results, double x){
         this.x0 = x;
+        double difference = arguments.get(arguments.size() - 1) - arguments.get(0);
+        if(difference > 0 && (x0 < arguments.get(0) || x0 > arguments.get(arguments.size() - 1))){
+            throw new RuntimeException("Error, wrong x0 value");
+        }else if(difference < 0 && (x0 > arguments.get(0) || x0 < arguments.get(arguments.size() - 1))){
+            throw new RuntimeException("Error, wrong x0 value");
+        }
         if(results.size() != arguments.size()){
             throw new RuntimeException("Error, arguments amount doesn't equal results amount");
         }

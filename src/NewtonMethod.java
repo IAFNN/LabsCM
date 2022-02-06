@@ -18,6 +18,7 @@ public class NewtonMethod {
             for(int i2 = 0; i2 < i; i2++){
                 product *= function.getX0() - function.getArguments().get(i2);
             }
+            System.out.println("Sum: " + sum);
             sum += calculateDividedDifference(new ArrayList<>(function.getArguments().subList(0, i + 1)), function) * product;
         }
         return sum;

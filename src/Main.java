@@ -9,8 +9,11 @@ public class Main {
                     1.461);
             LagrangeMethod lagrangeMethod = new LagrangeMethod(function);
             System.out.println(lagrangeMethod.calculatePolinom());
+            NewtonMethod newtonMethod = new NewtonMethod(function);
+            System.out.println(newtonMethod.calculatePolinom());
         }catch (RuntimeException e){
-            System.out.println(e.getMessage());
+            e.printStackTrace();
+            //System.out.println(e.getMessage());
         }
     }
 }

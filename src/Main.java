@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args){
@@ -96,6 +97,17 @@ public class Main {
             e.printStackTrace();
         }
 
-
+        try{
+            System.out.println("Smallest squares method:");
+            InterpolatedFunction function = new InterpolatedFunction(new ArrayList<>(Arrays.asList(8.03, 8.08, 8.16, 8.23, 8.26, 8.33)), new ArrayList<>(Arrays.asList(5.01, 4.78, 3.52, 3.12, 3.19, 2.95)), 8.05);
+            SmallestSquaresMethod smallestSquaresMethod = new SmallestSquaresMethod(function, 1);
+            System.out.println("\n\nLinear polinom:" + smallestSquaresMethod.calculate() + "\n");
+            smallestSquaresMethod.setPower(2);
+            System.out.println("\n\nQuadratic polinom:" + smallestSquaresMethod.calculate() + "\n");
+            smallestSquaresMethod.setPower(3);
+            System.out.println("\n\nCube polinom:" + smallestSquaresMethod.calculate() + "\n");
+        }catch (RuntimeException e){
+            e.printStackTrace();
+        }
     }
 }

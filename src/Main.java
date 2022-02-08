@@ -109,5 +109,18 @@ public class Main {
         }catch (RuntimeException e){
             e.printStackTrace();
         }
+        try{
+            System.out.println("Left Rectangles Method:");
+            LeftRectangleMethod leftRectangleMethod = new LeftRectangleMethod((x) -> Math.sqrt(0.3 * x + 1.2), 0.000001, 2.3, 1.5);
+            System.out.println(leftRectangleMethod.calculateArea());
+            System.out.println("Right Rectangles Method:");
+            RightRectangleMethod rightRectangleMethod = new RightRectangleMethod((x) -> Math.sqrt(0.3 * x + 1.2), 0.000001, 2.3, 1.5);
+            System.out.println(rightRectangleMethod.calculateArea());
+            System.out.println("Central Rectangles Method:");
+            CenterRectangleMethod centralRectangleMethod = new CenterRectangleMethod((x) -> Math.sqrt(0.3 * x + 1.2), 0.000001, 2.3, 1.5);
+            System.out.println(centralRectangleMethod.calculateArea());
+        }catch (RuntimeException e){
+            e.printStackTrace();
+        }
     }
 }

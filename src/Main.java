@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args){
@@ -110,20 +111,27 @@ public class Main {
             e.printStackTrace();
         }
         try{
+//            Scanner scanner = new Scanner(System.in);
+//            System.out.println("Enter a:");
+//            double lowerIntegrationLimit = scanner.nextDouble();
+//            System.out.println("Enter b:");
+//            double higherIntegrationLimit = scanner.nextDouble();
+//            System.out.println("Enter eps:");
+//            double eps = scanner.nextDouble();
             System.out.println("Left Rectangles Method:");
-            LeftRectangleMethod leftRectangleMethod = new LeftRectangleMethod((x) -> Math.sqrt(0.3 * x + 1.2), 0.000001, 2.3, 1.5);
+            LeftRectangleMethod leftRectangleMethod = new LeftRectangleMethod((x) -> Math.pow(x, 3) * Math.E * (x / 3) * Math.cosh(x), 0.1, 6, 0);
             System.out.println(leftRectangleMethod.calculateArea());
             System.out.println("Right Rectangles Method:");
-            RightRectangleMethod rightRectangleMethod = new RightRectangleMethod((x) -> Math.sqrt(0.3 * x + 1.2), 0.000001, 2.3, 1.5);
+            RightRectangleMethod rightRectangleMethod = new RightRectangleMethod((x) -> Math.pow(x, 3) * Math.E * (x / 3) * Math.cosh(x), 0.1, 6, 0);
             System.out.println(rightRectangleMethod.calculateArea());
             System.out.println("Central Rectangles Method:");
-            CenterRectangleMethod centralRectangleMethod = new CenterRectangleMethod((x) -> Math.sqrt(0.3 * x + 1.2), 0.000001, 2.3, 1.5);
+            CenterRectangleMethod centralRectangleMethod = new CenterRectangleMethod((x) -> Math.pow(x, 3) * Math.E * (x / 3) * Math.cosh(x), 0.1, 6, 0);
             System.out.println(centralRectangleMethod.calculateArea());
             System.out.println("Trapeze Method:");
-            TrapezeMethod trapezeMethod = new TrapezeMethod((x) -> Math.sqrt(0.3 * x + 1.2), 0.000001, 2.3, 1.5);
+            TrapezeMethod trapezeMethod = new TrapezeMethod((x) -> Math.pow(x, 3) * Math.E * (x / 3) * Math.cosh(x), 0.1, 6, 0);
             System.out.println(trapezeMethod.calculateArea());
             System.out.println("Simpson Method:");
-            SimpsonMethod simpsonMethod = new SimpsonMethod((x) -> Math.sqrt(0.3 * x + 1.2), 0.000001, 2.3, 1.5);
+            SimpsonMethod simpsonMethod = new SimpsonMethod((x) -> Math.pow(x, 3) * Math.E * (x / 3) * Math.cosh(x), 0.1, 6, 0);
             System.out.println(simpsonMethod.calculateArea());;
         }catch (RuntimeException e){
             e.printStackTrace();

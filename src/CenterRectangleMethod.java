@@ -7,10 +7,10 @@ public class CenterRectangleMethod extends RectangleMethod{
         this.higherIntegrationLimit = higherIntegrationLimit;
         this.lowerIntegrationLimit = lowerIntegrationLimit;
     }
-    public double calculateWithThisStep(RectangleMethod rectangleMethod, double step){
+    public double calculateWithThisStep(IntegrationMethod integrationMethod, double step){
         double seriesSum = 0;
-        for(double x = rectangleMethod.getLowerIntegrationLimit() + step / 2; x < rectangleMethod.getHigherIntegrationLimit(); x += step){
-            seriesSum += rectangleMethod.getFunction().apply(x);
+        for(double x = integrationMethod.getLowerIntegrationLimit() + step / 2; x < integrationMethod.getHigherIntegrationLimit(); x += step){
+            seriesSum += integrationMethod.getFunction().apply(x);
         }
         return step * seriesSum;
     }

@@ -119,6 +119,9 @@ public class Main {
             System.out.println("Central Rectangles Method:");
             CenterRectangleMethod centralRectangleMethod = new CenterRectangleMethod((x) -> Math.sqrt(0.3 * x + 1.2), 0.000001, 2.3, 1.5);
             System.out.println(centralRectangleMethod.calculateArea());
+            System.out.println("Trapeze Method:");
+            TrapezeMethod trapezeMethod = new TrapezeMethod((x) -> Math.sqrt(0.3 * x + 1.2), 0.000001, 2.3, 1.5);
+            System.out.println(trapezeMethod.calculateArea());
         }catch (RuntimeException e){
             e.printStackTrace();
         }

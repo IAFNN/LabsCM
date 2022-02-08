@@ -8,10 +8,10 @@ public class LeftRectangleMethod extends RectangleMethod{
         this.lowerIntegrationLimit = lowerIntegrationLimit;
     }
     @Override
-    public double calculateWithThisStep(RectangleMethod rectangleMethod, double step){
+    public double calculateWithThisStep(IntegrationMethod integrationMethod, double step){
         double seriesSum = 0;
-        for(double x = rectangleMethod.getLowerIntegrationLimit(); x < rectangleMethod.getHigherIntegrationLimit(); x += step){
-            seriesSum += rectangleMethod.getFunction().apply(x);
+        for(double x = integrationMethod.getLowerIntegrationLimit(); x < integrationMethod.getHigherIntegrationLimit(); x += step){
+            seriesSum += integrationMethod.getFunction().apply(x);
         }
         return step * seriesSum;
     }

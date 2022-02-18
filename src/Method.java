@@ -6,5 +6,4 @@ abstract class Method{
     Function function;
     Function firstDerivative;
     Function secondDerivative;
-
 }
